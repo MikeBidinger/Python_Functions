@@ -1,6 +1,6 @@
 # Python_Public
-Standardized function for save up repetitive work within Python programming!<br>
-Including:
+<p>Standardized function for save up repetitive work within Python programming!</p>
+<p>Including:</p>
   - file handling
   - data parsing
   - json handling
