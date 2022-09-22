@@ -1,5 +1,5 @@
-# Python_Public
-<p>Standardized function for save up repetitive work within Python programming!</p>
+<h1>Python_Public</h1>
+<h3>Standardized function for save up repetitive work within Python programming!</h3>
 <p>Including:</p>
 <ul>
   <li>file handling</li>
