@@ -10,7 +10,7 @@ def file_selection_dialog(file_types=[('All Files', '*.*')], initial_dir:str='')
     file_path = filedialog.askopenfilename(filetypes=file_types, initialdir=initial_dir)
     return file_path
 
-def getLatestFile(directory:str, file_name:str=''):
+def get_latest_file(directory:str, file_name:str=''):
     creation_time = 0.0
     # Loop through directory
     for file in os.scandir(directory):
