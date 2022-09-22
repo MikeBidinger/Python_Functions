@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   <h1>Python_Public</h1>
@@ -13,6 +13,6 @@
     <li>json handling</li>
     <li>mail (outlook) functions</li>
   </ul>
-  <i class="fa-brands fa-python"></i>
+  <p><i class="material-icons" style="float: left; margin-right: 15px;">language</i>Netherlands</p>
 </body>
 </html>
