@@ -13,5 +13,6 @@
     <li>json handling</li>
     <li>mail (outlook) functions</li>
   </ul>
+  <i class="fa-brands fa-python"></i>
 </body>
 </html>
