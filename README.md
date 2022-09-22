@@ -1,7 +1,9 @@
 # Python_Public
 <p>Standardized function for save up repetitive work within Python programming!</p>
 <p>Including:</p>
-  - file handling
-  - data parsing
-  - json handling
-  - mail (outlook) functions
+<ul>
+  <li>file handling</li>
+  <li>data parsing</li>
+  <li>json handling</li>
+  <li>mail (outlook) functions</li>
+</ul>
