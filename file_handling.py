@@ -4,6 +4,12 @@ import os
 import re
 from datetime import datetime
 
+def folder_selection_dialog(initial_dir:str=''):
+    root = tk.Tk()
+    root.withdraw()
+    folder_path = filedialog.askdirectory(initialdir=initial_dir)
+    return folder_path
+
 def file_selection_dialog(file_types=[('All Files', '*.*')], initial_dir:str=''):
     root = tk.Tk()
     root.withdraw()
