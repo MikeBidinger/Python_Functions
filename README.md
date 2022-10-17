@@ -13,6 +13,7 @@
     <li>mail (outlook) functions</li>
     <li>keyboard functions</li>
     <li>mouse functions</li>
+    <li>application functions</li>
   </ul>
 </body>
 </html>
