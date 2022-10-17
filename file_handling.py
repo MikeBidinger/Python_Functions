@@ -7,13 +7,20 @@ from datetime import datetime
 def folder_selection_dialog(initial_dir:str='', title:str=''):
     root = tk.Tk()
     root.withdraw()
-    folder_path = filedialog.askdirectory(initialdir=initial_dir, title=title)
+    folder_path = filedialog.askdirectory(
+        initialdir=initial_dir, 
+        title=title
+    )
     return folder_path
 
 def file_selection_dialog(file_types=[('All Files', '*.*')], initial_dir:str='', title:str=''):
     root = tk.Tk()
     root.withdraw()
-    file_path = filedialog.askopenfilename(filetypes=file_types, initialdir=initial_dir, title=title)
+    file_path = filedialog.askopenfilename(
+        filetypes=file_types, 
+        initialdir=initial_dir, 
+        title=title
+    )
     return file_path
 
 def get_latest_file(directory:str, file_name:str=''):
