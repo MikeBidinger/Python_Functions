@@ -10,6 +10,6 @@ time.sleep(2)
 print('Exit Sleep')
 
 # Keyboard Control
-inputs = ['q', 'x', 'q', '8', '*', 'enter', 'tab', 'shift+a', 'ctrl+a']
+inputs = ['x', 'q', '8', '*', 'enter', 'tab', 'shift+a', 'ctrl+a']
 for x in inputs:
     keyboard.press_and_release(x)
