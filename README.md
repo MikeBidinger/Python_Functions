@@ -11,8 +11,8 @@
     <li>data parsing</li>
     <li>json handling</li>
     <li>mail (outlook) functions</li>
-    <li>Keyboard functions</li>
-    <li>Mouse functions</li>
+    <li>keyboard functions</li>
+    <li>mouse functions</li>
   </ul>
 </body>
 </html>
