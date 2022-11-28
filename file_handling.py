@@ -62,28 +62,25 @@ def get_latest_file_from_subfolder(directory:str, folder_name:str, file_name:str
 
 def read_text(file_path:str):
     data = ''
-    f = open(file_path, 'r')
-    data = f.read()
-    f.close()
+    with open(file_path, 'r') as f:
+        data = f.read()
     return data
 
 def read_text_lines(file_path:str, nr_lines:int=0, encoding:str=None):
     data = []
-    f = open(file_path, 'r', encoding=encoding)
-    if nr_lines == 0:
-        for x in f:
-            data.append(x.replace('\n', ''))
-    else:
-        for i in range(0, nr_lines):
-            data.append(f.readline())
-    f.close()
+    with open(file_path, 'r', encoding=encoding) as f:
+        if nr_lines == 0:
+            for x in f:
+                data.append(x.replace('\n', ''))
+        else:
+            for i in range(0, nr_lines):
+                data.append(f.readline())
     return data
 
 def read_csv_data(file_path:str, key_headers:list, key_join:str, seperator:str=';', double_quotes:bool=False, encoding:str=None):
     data = {}
-    f = open(file_path, 'r', encoding=encoding)
-    data_str = f.read()
-    f.close()
+    with open(file_path, 'r', encoding=encoding) as f:
+        data_str = f.read()
     data_str = data_str.replace('\n\n', ' ')
     while ';;' in data_str:
         data_str = data_str.replace(';;', ';"";')
@@ -118,10 +115,9 @@ def read_csv_data(file_path:str, key_headers:list, key_join:str, seperator:str='
 def write_result_list(results:list, folder_path:str, file_name:str, time_stamp:str, file_extension:str='.csv'):
     file_path = folder_path + file_name + "_" + time_stamp + file_extension
     #file_path = folder_path + file_name + ("_" + get_time_stamp() if time_stamp else "") + file_extension
-    f = open(file_path, 'a')
-    for result in results:
-        f.write(result + '\n')
-    f.close()
+    with open(file_path, 'a') as f:
+        for result in results:
+            f.write(result + '\n')
     return file_path
 
 def get_time_stamp(date_only:bool=False):
