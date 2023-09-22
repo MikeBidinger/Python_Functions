@@ -7,7 +7,7 @@ import time
 import xmltodict
 
 
-def location_check(path: str, delay: int = 5):
+def location_check(path: str, retries: int = 12, delay: int = 5):
     """Check if the file or folder location exists, if not keep looping with the given delay in seconds.
     - Args:
         - path: A string representing the file or folder location
@@ -15,13 +15,19 @@ def location_check(path: str, delay: int = 5):
     - Returns:
         - True when the network connection exists.
     """
-    while not os.path.exists(path):
-        print(
-            f"ERROR {datetime.now()}:",
-            f"'{path}' doesn't exists! Retrying in {delay} seconds.",
-        )
-        time.sleep(delay)
-    print()
+    if not os.path.exists(path):
+        msg_str = f"'{path}' doesn't exists! Retrying in {delay} seconds."
+        for i in range(retries + 1):
+            if i != 0:
+                print(f"ERROR {datetime.now()}:", msg_str, f"Retry {i}/{retries}")
+            else:
+                print(f"ERROR {datetime.now()}:", msg_str)
+            time.sleep(delay)
+            if os.path.exists(path):
+                print(f"'{path}' exists!\n")
+                break
+        else:
+            return False
     return True
 
 
