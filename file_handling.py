@@ -11,7 +11,7 @@ def location_check(path: str, retries: int = 12, delay: int = 5):
     """Check if the file or folder location exists, if not keep looping with the given delay in seconds.
     - Args:
         - path: A string representing the file or folder location.
-        - retries: An optional integer representing the number of retries.
+        - retries: An optional integer representing the number of retries (default = 12 retries).
         - delay: An optional integer representing the delay in seconds (default = 5 sec).
     - Returns:
         - True when the network connection exists.
