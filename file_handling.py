@@ -10,7 +10,8 @@ import xmltodict
 def location_check(path: str, retries: int = 12, delay: int = 5):
     """Check if the file or folder location exists, if not keep looping with the given delay in seconds.
     - Args:
-        - path: A string representing the file or folder location
+        - path: A string representing the file or folder location.
+        - retries: An optional integer representing the number of retries.
         - delay: An optional integer representing the delay in seconds (default = 5 sec).
     - Returns:
         - True when the network connection exists.
@@ -37,7 +38,7 @@ def folder_selection_dialog(initial_dir: str = "", title: str = ""):
         - initial_dir: A string specifying the initial directory.
         - title: A string specifying the title of the dialog.
     - Returns:
-        - The path of the selected folder
+        - The path of the selected folder.
     """
     root = tk.Tk()
     root.withdraw()
@@ -54,7 +55,7 @@ def file_selection_dialog(
         - initial_dir: A string specifying the initial directory.
         - title: A string specifying the title of the dialog.
     - Returns:
-        - The path of the selected file
+        - The path of the selected file.
     """
     root = tk.Tk()
     root.withdraw()
@@ -249,7 +250,7 @@ def get_time_stamp(date_only: bool = False):
     - Args:
         - date_only: An optional boolean, True if only the date (excluding time) has to be returned.
     - Returns:
-        - A string containing the current timestamp (including or excluding time, depending on the given optional argument)
+        - A string containing the current timestamp (including or excluding time, depending on the given optional argument).
     """
     time_stamp = (
         str(datetime.now())
