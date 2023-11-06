@@ -41,8 +41,12 @@ def folder_selection_dialog(initial_dir: str = "", title: str = ""):
         - The path of the selected folder.
     """
     root = tk.Tk()
+    root.wm_attributes("-topmost", 1)
     root.withdraw()
-    folder_path = filedialog.askdirectory(initialdir=initial_dir, title=title)
+    folder_path = filedialog.askdirectory(
+        initialdir=initial_dir, title=title, parent=root
+    )
+    root.destroy()
     return folder_path
 
 
@@ -58,10 +62,12 @@ def file_selection_dialog(
         - The path of the selected file.
     """
     root = tk.Tk()
+    root.wm_attributes("-topmost", 1)
     root.withdraw()
     file_path = filedialog.askopenfilename(
-        filetypes=file_types, initialdir=initial_dir, title=title
+        filetypes=file_types, initialdir=initial_dir, title=title, parent=root
     )
+    root.destroy()
     return file_path
 
 
