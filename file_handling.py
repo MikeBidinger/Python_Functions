@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import os
 import re
 from datetime import datetime
@@ -268,3 +268,44 @@ def get_time_stamp(date_only: bool = False):
     if date_only:
         return time_stamp.split("_")[0]
     return time_stamp
+
+
+def prompt_message(type, title, message):
+    """Prompt the user with a message.
+    - Args:
+        - type:
+            - info: Displays an information message box
+            - warning: Displays a warning message box
+            - error: Displays a error message box
+            - question: Ask a question, returns the symbolic name of the selected button.
+            - okcancel: Ask if operation should proceed, returns True if the answer is "ok" and False otherwise.
+            - retrycancel: Ask if operation should be retried, return True if the answer is "retry" and False otherwise.
+            - yesno: Ask a question, returns True if the answer is "yes" and False if "no".
+            - yesnocancel: Ask a question, returns True if the answer is "yes", False if "no", and None otherwise.
+        - title: A string representing the title of the prompt.
+        - message: A string representing the message of the prompt.
+    - Returns:
+        - A boolean or string (depending on the type argument) containing the users answer of the asked question.
+    """
+    result = None
+    root = tk.Tk()
+    root.wm_attributes("-topmost", 1)
+    root.withdraw()
+    if type == "info":
+        messagebox.showinfo(title, message, parent=root)
+    elif type == "warning":
+        messagebox.showwarning(title, message, parent=root)
+    elif type == "error":
+        messagebox.showerror(title, message, parent=root)
+    elif type == "question":
+        result = messagebox.askquestion(title, message, parent=root)
+    elif type == "okcancel":
+        result = messagebox.askokcancel(title, message, parent=root)
+    elif type == "retrycancel":
+        result = messagebox.askretrycancel(title, message, parent=root)
+    elif type == "yesno":
+        result = messagebox.askyesno(title, message, parent=root)
+    elif type == "yesnocancel":
+        result = messagebox.askyesnocancel(title, message, parent=root)
+    root.destroy()
+    return result
