@@ -1,5 +1,4 @@
 import json
-from pprint import pprint as pp
 
 
 def write_json(file_path: str, data):

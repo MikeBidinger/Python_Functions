@@ -5,16 +5,17 @@ import re
 from datetime import datetime
 import time
 import xmltodict
+from collections import OrderedDict
 
 
-def location_check(path: str, retries: int = 12, delay: int = 5):
-    """Check if the file or folder location exists, if not keep looping with the given delay in seconds.
+def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
+    """Check if the given path exists, if not keep looping with the given delay in seconds.
     - Args:
-        - path: A string representing the file or folder location.
+        - path: A string representing the path (e.g. file or directory).
         - retries: An optional integer representing the number of retries (default = 12 retries).
-        - delay: An optional integer representing the delay in seconds (default = 5 sec).
+        - delay: An optional integer representing the retry-delay in seconds (default = 5 sec).
     - Returns:
-        - True when the network connection exists.
+        - A boolean, True when the path is found, False if the path is not found after the given retries.
     """
     if not os.path.exists(path):
         msg_str = f"'{path}' doesn't exists! Retrying in {delay} seconds."
@@ -32,34 +33,34 @@ def location_check(path: str, retries: int = 12, delay: int = 5):
     return True
 
 
-def folder_selection_dialog(initial_dir: str = "", title: str = ""):
-    """A folder selection dialog using the TKinter filedialog UI.
+def directory_selection_dialog(initial_dir: str = "", title: str = "") -> str:
+    """A directory selection dialog using the TKinter filedialog UI.
     - Args:
         - initial_dir: A string specifying the initial directory.
         - title: A string specifying the title of the dialog.
     - Returns:
-        - The path of the selected folder.
+        - A string containing the path of the selected directory.
     """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
-    folder_path = filedialog.askdirectory(
+    directory_path = filedialog.askdirectory(
         initialdir=initial_dir, title=title, parent=root
     )
     root.destroy()
-    return folder_path
+    return directory_path
 
 
 def file_selection_dialog(
     file_types=[("All Files", "*.*")], initial_dir: str = "", title: str = ""
-):
+) -> str:
     """A file selection dialog using the TKinter filedialog UI.
     - Args:
-        - file_types: A list with tuples of predefined file types.
+        - file_types: A list with tuples of predefined file types (e.g. [("CSV Files", "*.csv")]).
         - initial_dir: A string specifying the initial directory.
         - title: A string specifying the title of the dialog.
     - Returns:
-        - The path of the selected file.
+        - A string containing the path of the selected file.
     """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
@@ -71,7 +72,7 @@ def file_selection_dialog(
     return file_path
 
 
-def get_all_files(directory: str, search_pattern: str = ""):
+def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
     """Get all file paths of a given directory (even for files within sub-directories).
     - Args:
         - directory: A string specifying the directory.
@@ -88,7 +89,7 @@ def get_all_files(directory: str, search_pattern: str = ""):
     return file_paths
 
 
-def get_latest_file(directory: str, file_pattern: str = ""):
+def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
     """Get the most recent (latest) created file in a given directory.
     - Args:
         - directory: A string specifying the directory.
@@ -108,51 +109,50 @@ def get_latest_file(directory: str, file_pattern: str = ""):
                 file_found = True
                 if os.path.getctime(file.path) > creation_time:
                     creation_time = os.path.getctime(file.path)
-                    latestFile = file
+                    latestFile = file.path
                 # print(datetime.utcfromtimestamp(creation_time), file.path)
     if file_found:
         return latestFile
 
 
-def get_latest_file_from_subfolder(
-    directory: str, directory_name: str, file_name: str = "", file_extension: str = ""
-):
+def get_latest_file_from_subdirectory(
+    directory: str, directory_name: str, file_pattern: str = ""
+) -> str | None:
     """Get the most recent (latest) created file within a sub-directory of a given directory.
     - Args:
         - directory: A string specifying the directory.
         - directory_name: A string specifying the name of the sub-directory (partial name is possible as well).
+        - file_pattern: An optional string specifying the pattern which need to comply with the filename.
     - Returns:
         - A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
     """
     creation_time = 0.0
     file_found = False
     # Loop through directory
-    for subfolder in os.scandir(directory):
-        if subfolder.is_dir() and directory_name in subfolder.name:
-            for file in os.scandir(subfolder):
+    for subdir in os.scandir(directory):
+        if subdir.is_dir() and directory_name in subdir.name:
+            for file in os.scandir(subdir):
                 # If object is a file
                 if file.is_file():
-                    # If file extension matches
-                    if file_extension in file.name or file_extension == "":
-                        # If filename matches
-                        if re.search(file_name, file.name) or file_name == "":
-                            # Get creation datetime
-                            file_found = True
-                            if os.path.getctime(file.path) > creation_time:
-                                creation_time = os.path.getctime(file.path)
-                                latest_file = file
-                            # print(datetime.utcfromtimestamp(creation_time), file.path)
+                    # If filename matches
+                    if re.search(file_pattern, file.name):
+                        # Get creation datetime
+                        file_found = True
+                        if os.path.getctime(file.path) > creation_time:
+                            creation_time = os.path.getctime(file.path)
+                            latest_file = file.path
+                        # print(datetime.utcfromtimestamp(creation_time), file.path)
     if file_found:
         return latest_file
 
 
-def read_text(file_path: str, encoding: str = None):
-    """Read the data from a text file.
+def read_file(file_path: str, encoding: str = None) -> str:
+    """Read the data from a file.
     - Args:
-        - file_path: A string representing the filepath.
-        - encoding: A string representing the encoding.
+        - file_path: A string representing the file path.
+        - encoding: An optional string representing the encoding.
     - Returns:
-        - A string containing the data of the CSV file.
+        - A string containing the data of the given file.
     """
     data = ""
     with open(file_path, "r", encoding=encoding) as f:
@@ -160,10 +160,10 @@ def read_text(file_path: str, encoding: str = None):
     return data
 
 
-def read_xml(file_path: str):
+def read_xml(file_path: str) -> OrderedDict:
     """Read the data from a XML file and return it as an ordered dictionary.
     - Args:
-        - file_path: A string representing the filepath.
+        - file_path: A string representing the file path.
     - Returns:
         - An ordered dictionary containing the data of the XML file.
     """
@@ -173,14 +173,16 @@ def read_xml(file_path: str):
     return data
 
 
-def read_text_lines(file_path: str, nr_lines: int = -1, encoding: str = None):
-    """Read the data from a text file, line by line.
+def read_file_lines(
+    file_path: str, nr_lines: int = -1, encoding: str = None
+) -> list[str]:
+    """Read the data from a file, line by line.
     - Args:
-        - file_path: A string representing the filepath.
-        - nr_lines: An integer representing the number of lines to read.
-        - encoding: A string representing the encoding.
+        - file_path: A string representing the file path.
+        - nr_lines: An optional integer representing the number of lines to read.
+        - encoding: An optional string representing the encoding.
     - Returns:
-        - A list of strings containing the data of the CSV file.
+        - A list of strings containing the data of the file.
     """
     data = []
     with open(file_path, "r", encoding=encoding) as f:
@@ -198,22 +200,22 @@ def read_csv_data(
     separator: str = ";",
     double_quotes: bool = False,
     encoding: str = None,
-):
-    """Read the data from a CSV file.
+) -> list[dict]:
+    """Read the data from a CSV file and return it as a list of dictionaries.
     - Args:
-        - file_path: A string representing the filepath.
-        - separator: A string representing the separator of the CSV file.
-        - double_quotes: A boolean representing whether to dispose the double quotes within the CSV file.
-        - encoding: A string representing the encoding.
+        - file_path: A string representing the file path.
+        - separator: An optional string representing the separator of the CSV file.
+        - double_quotes: An optional boolean representing whether to dispose the double quotes within the CSV file.
+        - encoding: An optional string representing the encoding.
     - Returns:
-        - A list of dictionaries containing the data of the CSV file in header and value pairs.
+        - A list of dictionaries containing the data of the CSV file in key and value pairs.
     """
     data = []
-    rows = read_text_lines(file_path, encoding=encoding)
+    rows = read_file_lines(file_path, encoding=encoding)
     if double_quotes:
-        headers = rows[0][1:-1].split(f'"{separator}"')
+        keys = rows[0][1:-1].split(f'"{separator}"')
     else:
-        headers = rows[0].split(separator)
+        keys = rows[0].split(separator)
     for row in rows[1:]:
         data_row = {}
         if double_quotes:
@@ -221,37 +223,28 @@ def read_csv_data(
         else:
             values = row.split(separator)
         for i in range(len(values)):
-            data_row[headers[i]] = values[i]
+            data_row[keys[i]] = values[i]
         data.append(data_row)
     return data
 
 
-def write_result_list(
-    results: list,
-    directory_path: str,
-    file_name: str,
-    time_stamp: str,
-    file_extension: str = ".csv",
-):
-    """Write a list of data to a file.
+def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
+    """Write a list of strings to a file. CAUTION: By default if the file path already exists, it will be overwritten.
     - Args:
-        - results: A list of data to write.
-        - directory_path: A string representing the directory path of the destination file.
-        - file_name: A string representing the name of the destination file.
-        - time_stamp: A string representing the current time of the creation of the destination file.
-        - file_extension: An optional string representing the extension of the destination file.
+        - results: A list of strings to write to the file.
+        - file_path: A string representing the path of the destination file.
+        - mode: An optional string representing the mode (e.g. "w" for write, "a" for append).
     - Returns:
-        - A string containing the entire file's destination path.
+        - A string containing the path of the destination file.
     """
-    file_path = directory_path + file_name + "_" + time_stamp + file_extension
-    # file_path = directory_path + file_name + ("_" + get_time_stamp() if time_stamp else "") + file_extension
-    with open(file_path, "a") as f:
+    with open(file_path, mode) as f:
         for result in results:
-            f.write(result + "\n")
+            f.write(result)
+            f.write("\n")
     return file_path
 
 
-def get_time_stamp(date_only: bool = False):
+def get_time_stamp(date_only: bool = False) -> str:
     """Get the current timestamp.
     - Args:
         - date_only: An optional boolean, True if only the date (excluding time) has to be returned.
@@ -274,14 +267,16 @@ def prompt_message(type, title, message):
     """Prompt the user with a message.
     - Args:
         - type:
-            - info: Displays an information message box
-            - warning: Displays a warning message box
-            - error: Displays a error message box
-            - question: Ask a question, returns the symbolic name of the selected button.
-            - okcancel: Ask if operation should proceed, returns True if the answer is "ok" and False otherwise.
-            - retrycancel: Ask if operation should be retried, return True if the answer is "retry" and False otherwise.
-            - yesno: Ask a question, returns True if the answer is "yes" and False if "no".
-            - yesnocancel: Ask a question, returns True if the answer is "yes", False if "no", and None otherwise.
+            | Value       | Description                                                                                  |
+            | ----------- | -------------------------------------------------------------------------------------------- |
+            | info        | Displays an information message box                                                          |
+            | warning     | Displays a warning message box                                                               |
+            | error       | Displays an error message box                                                                |
+            | question    | Ask a question, returns the symbolic name of the selected button                             |
+            | okcancel    | Ask if operation should proceed, returns True if the answer is "ok" and False otherwise      |
+            | retrycancel | Ask if operation should be retried, return True if the answer is "retry" and False otherwise |
+            | yesno       | Ask a question, returns True if the answer is "yes" and False if "no"                        |
+            | yesnocancel | Ask a question, returns True if the answer is "yes", False if "no", and None otherwise       |
         - title: A string representing the title of the prompt.
         - message: A string representing the message of the prompt.
     - Returns:
