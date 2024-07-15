@@ -4,9 +4,24 @@ import os
 import re
 from datetime import datetime
 import time
-import xmltodict
+import xmltodict  # https://pypi.org/project/xmltodict/ - This module is not build-in with Python
 from collections import OrderedDict
 
+
+def main():
+    # Functions in this module:
+    location_check()
+    directory_selection_dialog()
+    file_selection_dialog()
+    get_all_files()
+    get_latest_file()
+    get_latest_file_from_subdirectory()
+    read_file()
+    read_xml()
+    read_file_lines()
+    write_file_list()
+    get_time_stamp()
+    prompt_message()
 
 def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
     """Check if the given path exists, if not keep looping with the given delay in seconds.
@@ -192,39 +207,6 @@ def read_file_lines(
         else:
             for _ in range(0, nr_lines):
                 data.append(f.readline())
-    return data
-
-
-def read_csv_data(
-    file_path: str,
-    separator: str = ";",
-    double_quotes: bool = False,
-    encoding: str = None,
-) -> list[dict]:
-    """Read the data from a CSV file and return it as a list of dictionaries.
-    - Args:
-        - file_path: A string representing the file path.
-        - separator: An optional string representing the separator of the CSV file.
-        - double_quotes: An optional boolean representing whether to dispose the double quotes within the CSV file.
-        - encoding: An optional string representing the encoding.
-    - Returns:
-        - A list of dictionaries containing the data of the CSV file in key and value pairs.
-    """
-    data = []
-    rows = read_file_lines(file_path, encoding=encoding)
-    if double_quotes:
-        keys = rows[0][1:-1].split(f'"{separator}"')
-    else:
-        keys = rows[0].split(separator)
-    for row in rows[1:]:
-        data_row = {}
-        if double_quotes:
-            values = row[1:-1].split(f'"{separator}"')
-        else:
-            values = row.split(separator)
-        for i in range(len(values)):
-            data_row[keys[i]] = values[i]
-        data.append(data_row)
     return data
 
 
