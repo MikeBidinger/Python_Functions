@@ -6,7 +6,7 @@ customized relatively easily to achieve tailored functionalities.
 
 ## Content:
 
--   [file handling](file_handling.py)
+-   [File Handling](file_handling.py)
 
     Mostly file related functions, i.a.:
 
@@ -24,21 +24,21 @@ customized relatively easily to achieve tailored functionalities.
     -   get_time_stamp()
     -   prompt_message()
 
--   [csv handling](csv_functions.py):
+-   [CSV Handling](csv_functions.py):
 
     Read and write CSV files:
 
     -   read_csv()
     -   write_csv()
 
--   [json handling](json_functions.py)
+-   [JSON Handling](json_functions.py)
 
     Read and write JSON files:
 
     -   read_json()
     -   write_json()
 
--   [data parsing](parse_functions.py)
+-   [Data Parsing](parse_functions.py)
 
     Parsing functions for multiple different data types and structures:
 
@@ -50,14 +50,14 @@ customized relatively easily to achieve tailored functionalities.
     -   string_to_dicts()
     -   dicts_to_string()
 
--   [logging](log_example.py)
+-   [Logging](log_example.py)
 
     How to log properly and well formatted.
 
--   [mail (outlook) functions](outlook.py)
+-   [Mail (Outlook) Functions](outlook.py)
 
--   [keyboard functions](Keyboard)
+-   [Keyboard Functions](Keyboard)
 
--   [mouse functions](Mouse)
+-   [Mouse Functions](Mouse)
 
--   [application functions](Application)
+-   [Application Functions](Application)
