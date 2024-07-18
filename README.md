@@ -30,6 +30,10 @@ customized relatively easily to achieve tailored functionalities.
 
     -   read_csv()
     -   write_csv()
+    -   create_csv()
+    -   append_csv_record()
+    -   read_csv_records()
+    -   example_function()
 
 -   [JSON Handling](json_functions.py)
 
