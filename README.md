@@ -9,7 +9,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[File Handling](file_handling.py)**
 
     <details>
-      <summary>Mostly file related functions. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Mostly file related functions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function                              | Description                                                                               |
     | ------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[CSV Handling](csv_functions.py):**
 
     <details>
-      <summary>Read and write CSV files. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Read and write CSV files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function              | Description                                                                   |
     | --------------------- | ----------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[JSON Handling](json_functions.py)**
 
     <details>
-      <summary>Read and write JSON files. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Read and write JSON files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function       | Description                      |
     | -------------- | -------------------------------- |
@@ -59,7 +59,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Data Parsing](parse_functions.py)**
 
     <details>
-      <summary>Parsing functions for multiple different data types and structures. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Parsing functions for multiple different data types and structures. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function             | Description                                     |
     | -------------------- | ----------------------------------------------- |
