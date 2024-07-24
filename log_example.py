@@ -5,7 +5,7 @@ LOG_FORMAT = (
     "%(asctime)s - %(levelname)-8s - %(filename)s - %(funcName)s() - %(message)s"
 )
 
-# Set up teh logger
+# Set up the logger
 logging.basicConfig(
     level=logging.DEBUG,  # The level chosen determines what will be logged
     filename="log.log",  # Can be omitted to write logs only to the terminal

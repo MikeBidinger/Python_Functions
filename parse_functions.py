@@ -55,7 +55,7 @@ def string_to_matrix(
 def matrix_to_string(
     matrix: list[list], row_sep: str = "\n", col_sep: str = ";"
 ) -> str:
-    """Parse a string into a matrix. A matrix is a list of lists (2D-array).
+    """Parse a matrix into a string. A matrix is a list of lists (2D-array).
     - Args:
         - matrix: A matrix data structure, a list of list (2D-array).
         - row_sep: An optional string representing the row-separator that will be used for the returned string.

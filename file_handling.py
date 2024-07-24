@@ -88,7 +88,7 @@ def file_selection_dialog(
 
 
 def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
-    """Get all file paths of a given directory (even for files within sub-directories).
+    """Return all file paths of a given directory (even for files within sub-directories).
     - Args:
         - directory: A string specifying the directory.
         - search_pattern: An optional string specifying the pattern which need to comply with the files.
@@ -105,7 +105,7 @@ def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
 
 
 def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
-    """Get the most recent (latest) created file in a given directory.
+    """Return the most recent (latest) created file in a given directory.
     - Args:
         - directory: A string specifying the directory.
         - file_pattern: An optional string specifying the pattern which need to comply with the filename.
@@ -133,7 +133,7 @@ def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
 def get_latest_file_from_subdirectory(
     directory: str, directory_name: str, file_pattern: str = ""
 ) -> str | None:
-    """Get the most recent (latest) created file within a sub-directory of a given directory.
+    """Return the most recent (latest) created file within a sub-directory of a given directory.
     - Args:
         - directory: A string specifying the directory.
         - directory_name: A string specifying the name of the sub-directory (partial name is possible as well).
@@ -211,7 +211,8 @@ def read_file_lines(
 
 
 def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
-    """Write a list of strings to a file. CAUTION: By default if the file path already exists, it will be overwritten.
+    """Write a list of strings to a file.
+    CAUTION: By default if the file path already exists, it will be overwritten.
     - Args:
         - results: A list of strings to write to the file.
         - file_path: A string representing the path of the destination file.
@@ -227,7 +228,7 @@ def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
 
 
 def get_time_stamp(date_only: bool = False) -> str:
-    """Get the current timestamp.
+    """Return the current timestamp.
     - Args:
         - date_only: An optional boolean, True if only the date (excluding time) has to be returned.
     - Returns:
