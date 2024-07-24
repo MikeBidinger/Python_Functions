@@ -9,7 +9,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[File Handling](file_handling.py)**
 
     <details>
-      <summary>Mostly file related functions. <i style="color:gray">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Mostly file related functions. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
 
     | Function                              | Description                                                                               |
     | ------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -20,7 +20,7 @@ customized relatively easily to achieve tailored functionalities.
     | _get_latest_file()_                   | Return the most recent (latest) created file in a given directory.                        |
     | _get_latest_file_from_subdirectory()_ | Return the most recent (latest) created file within a sub-directory of a given directory. |
     | _read_file()_                         | Read the data from a file.                                                                |
-    | _read_xml()_                          | Read the data from a XML file and return it as an ordered dictionary.                     |
+    | _read_xml()_[^1]                      | Read the data from a XML file and return it as an ordered dictionary.                     |
     | _read_file_lines()_                   | Read the data from a file, line by line.                                                  |
     | _write_file_list()_                   | Write a list of strings to a file.                                                        |
     | _get_time_stamp()_                    | Return the current timestamp.                                                             |
@@ -31,12 +31,12 @@ customized relatively easily to achieve tailored functionalities.
 -   **[CSV Handling](csv_functions.py):**
 
     <details>
-      <summary>Read and write CSV files. <i style="color:gray">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Read and write CSV files. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
 
     | Function              | Description                                                                   |
     | --------------------- | ----------------------------------------------------------------------------- |
-    | _read_csv()_          | Read the data from a CSV file into a matrix[^1].                              |
-    | _write_csv()_         | Write a matrix[^1] into a CSV file.                                           |
+    | _read_csv()_          | Read the data from a CSV file into a matrix[^2].                              |
+    | _write_csv()_         | Write a matrix[^2] into a CSV file.                                           |
     | _create_csv()_        | Create a CSV file with the given field names.                                 |
     | _append_csv_record()_ | Append a dictionary record to the given CSV file.                             |
     | _read_csv_records()_  | Read the records from a CSV file into a list of dictionaries.                 |
@@ -47,7 +47,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[JSON Handling](json_functions.py)**
 
     <details>
-      <summary>Read and write JSON files. <i style="color:gray">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Read and write JSON files. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
 
     | Function       | Description                      |
     | -------------- | -------------------------------- |
@@ -59,15 +59,15 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Data Parsing](parse_functions.py)**
 
     <details>
-      <summary>Parsing functions for multiple different data types and structures. <i style="color:gray">(Click to view/hide functions and descriptions.)</i></summary>
+      <summary>Parsing functions for multiple different data types and structures. <i style="color:Gray;">(Click to view/hide functions and descriptions.)</i></summary>
 
     | Function             | Description                                     |
     | -------------------- | ----------------------------------------------- |
     | _string_to_list()_   | Parse a string into a list.                     |
-    | _string_to_matrix()_ | Parse a string into a matrix[^1].               |
-    | _matrix_to_string()_ | Parse a matrix[^1] into a string.               |
-    | _matrix_to_dicts()_  | Parse a matrix[^1] into a list of dictionaries. |
-    | _dicts_to_matrix()_  | Parse a list of dictionaries into a matrix[^1]. |
+    | _string_to_matrix()_ | Parse a string into a matrix[^2].               |
+    | _matrix_to_string()_ | Parse a matrix[^2] into a string.               |
+    | _matrix_to_dicts()_  | Parse a matrix[^2] into a list of dictionaries. |
+    | _dicts_to_matrix()_  | Parse a list of dictionaries into a matrix[^2]. |
     | _string_to_dicts()_  | Parse a string into a list of dictionaries.     |
     | _dicts_to_string()_  | Parse a list of dictionaries into a string.     |
 
@@ -85,4 +85,5 @@ customized relatively easily to achieve tailored functionalities.
 
 -   **[Application Functions](Application)**
 
-[^1]: A matrix is a list of lists (2D-array).
+[^1]: The function _read_xml()_ uses the module "[xmltodict](https://pypi.org/project/xmltodict/)". This module is not build-in with Python.
+[^2]: A matrix is a list of lists (2D-array).
