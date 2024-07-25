@@ -9,7 +9,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[File Handling](file_handling.py)**
 
     <details>
-      <summary>Mostly file related functions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
+      <summary>Mostly file related functions. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
 
     | Function                              | Description                                                                               |
     | ------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[CSV Handling](csv_functions.py):**
 
     <details>
-      <summary>Read and write CSV files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
+      <summary>Read and write CSV files. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
 
     | Function              | Description                                                                   |
     | --------------------- | ----------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[JSON Handling](json_functions.py)**
 
     <details>
-      <summary>Read and write JSON files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
+      <summary>Read and write JSON files. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
 
     | Function       | Description                      |
     | -------------- | -------------------------------- |
@@ -59,7 +59,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Data Parsing](parse_functions.py)**
 
     <details>
-      <summary>Parsing functions for multiple different data types and structures. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
+      <summary>Parsing functions for multiple different data types and structures. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
 
     | Function             | Description                                     |
     | -------------------- | ----------------------------------------------- |
@@ -82,6 +82,18 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Keyboard Functions](Keyboard)**
 
 -   **[Mouse Functions](Mouse)**
+
+    <details>
+      <summary>Automate mouse actions. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+
+    | Function               | Description                                                           |
+    | ---------------------- | --------------------------------------------------------------------- |
+    | _get_mouse_position()_ | Get the current mouse position coordinates.                           |
+    | _set_mouse()_          | Set the mouse position to a given position.                           |
+    | _move_mouse()_         | Move the mouse position relative to the current mouse position.       |
+    | _afk_movement()_       | Move the mouse position from a starting point for the given duration. |
+
+    </details>
 
 -   **[Application Functions](Application)**
 
