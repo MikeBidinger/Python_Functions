@@ -9,7 +9,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[File Handling](file_handling.py)**
 
     <details>
-      <summary>Mostly file related functions. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+      <summary>Mostly file related functions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function                              | Description                                                                               |
     | ------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[CSV Handling](csv_functions.py):**
 
     <details>
-      <summary>Read and write CSV files. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+      <summary>Read and write CSV files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function              | Description                                                                   |
     | --------------------- | ----------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[JSON Handling](json_functions.py)**
 
     <details>
-      <summary>Read and write JSON files. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+      <summary>Read and write JSON files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function       | Description                      |
     | -------------- | -------------------------------- |
@@ -59,7 +59,7 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Data Parsing](parse_functions.py)**
 
     <details>
-      <summary>Parsing functions for multiple different data types and structures. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+      <summary>Parsing functions for multiple different data types and structures. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
     | Function             | Description                                     |
     | -------------------- | ----------------------------------------------- |
@@ -84,18 +84,19 @@ customized relatively easily to achieve tailored functionalities.
 -   **[Mouse Functions](Mouse)**
 
     <details>
-      <summary>Automate mouse actions. <h6>(Click to view/hide functions and descriptions.)</h6></summary><br>
+      <summary>Automate mouse actions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
 
-    | Function               | Description                                                           |
-    | ---------------------- | --------------------------------------------------------------------- |
-    | _get_mouse_position()_ | Get the current mouse position coordinates.                           |
-    | _set_mouse()_          | Set the mouse position to a given position.                           |
-    | _move_mouse()_         | Move the mouse position relative to the current mouse position.       |
-    | _afk_movement()_       | Move the mouse position from a starting point for the given duration. |
+    | Function                   | Description                                                           |
+    | -------------------------- | --------------------------------------------------------------------- |
+    | _get_mouse_position()_[^3] | Get the current mouse position coordinates.                           |
+    | _set_mouse()_[^3]          | Set the mouse position to a given position.                           |
+    | _move_mouse()_[^3]         | Move the mouse position relative to the current mouse position.       |
+    | _afk_movement()_[^3]       | Move the mouse position from a starting point for the given duration. |
 
     </details>
 
 -   **[Application Functions](Application)**
 
-[^1]: The function _read_xml()_ uses the module "[xmltodict](https://pypi.org/project/xmltodict/)". This module is not build-in with Python.
+[^1]: This function uses the module "[xmltodict](https://pypi.org/project/xmltodict/)". This module is not build-in with Python.
 [^2]: A matrix is a list of lists (2D-array).
+[^3]: This function uses the module "[pyautogui](https://pyautogui.readthedocs.io/)". This module is not build-in with Python.
