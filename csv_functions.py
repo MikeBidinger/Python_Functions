@@ -13,18 +13,21 @@ def main():
     example_function()
 
 
-def read_csv(file_path: str, delimiter: str = ";", mode: str = "r") -> list[list]:
+def read_csv(
+    file_path: str, delimiter: str = ";", mode: str = "r", encoding=None
+) -> list[list]:
     """Read the data from a CSV file into a matrix. A matrix is a list of lists (2D-array).
     - Args:
         - file_path: A string representing the source file path.
         - delimiter: An optional string representing the delimiter of the CSV file.
         - mode: An optional string representing the mode in which the file is opened (e.g. "w" for write, "a" for append).
+        - encoding: An optional string representing the encoding of the file.
     - Returns:
         - A matrix data structure, a list of list (2D-array).
     """
     matrix = []
     # Open the file from the given path in the specified mode
-    with open(file_path, mode) as f:
+    with open(file_path, mode, encoding=encoding) as f:
         # Create a CSV reader
         reader = csv.reader(f, delimiter=delimiter)
         # Read each row from the CSV file and append it to the matrix
