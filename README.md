@@ -81,6 +81,8 @@ customized relatively easily to achieve tailored functionalities.
 
 -   **[Keyboard Functions](Keyboard)**
 
+    Automate keyboard actions.[^3]
+
 -   **[Mouse Functions](Mouse)**
 
     <details>
@@ -99,4 +101,4 @@ customized relatively easily to achieve tailored functionalities.
 
 [^1]: This function uses the module "[xmltodict](https://pypi.org/project/xmltodict/)". This module is not build-in with Python.
 [^2]: A matrix is a list of lists (2D-array).
-[^3]: This function uses the module "[pyautogui](https://pyautogui.readthedocs.io/)". This module is not build-in with Python.
+[^3]: This function/script uses the module "[pyautogui](https://pyautogui.readthedocs.io/)". This module is not build-in with Python.
