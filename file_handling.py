@@ -23,14 +23,14 @@ def main():
     get_time_stamp()
     prompt_message()
 
+
 def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
     """Check if the given path exists, if not keep looping with the given delay in seconds.
-    - Args:
-        - path: A string representing the path (e.g. file or directory).
-        - retries: An optional integer representing the number of retries (default = 12 retries).
-        - delay: An optional integer representing the retry-delay in seconds (default = 5 sec).
-    - Returns:
-        - A boolean, True when the path is found, False if the path is not found after the given retries.
+
+    :param path: A string representing the path (e.g. file or directory).
+    :param retries: An optional integer representing the number of retries (default = 12 retries).
+    :param delay: An optional integer representing the retry-delay in seconds (default = 5 sec).
+    :return: A boolean, True when the path is found, False if the path is not found after the given retries.
     """
     if not os.path.exists(path):
         msg_str = f"'{path}' doesn't exists! Retrying in {delay} seconds."
@@ -50,11 +50,10 @@ def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
 
 def directory_selection_dialog(initial_dir: str = "", title: str = "") -> str:
     """A directory selection dialog using the TKinter filedialog UI.
-    - Args:
-        - initial_dir: A string specifying the initial directory.
-        - title: A string specifying the title of the dialog.
-    - Returns:
-        - A string containing the path of the selected directory.
+
+    :param initial_dir: A string specifying the initial directory.
+    :param title: A string specifying the title of the dialog.
+    :return: A string containing the path of the selected directory.
     """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
@@ -70,12 +69,11 @@ def file_selection_dialog(
     file_types=[("All Files", "*.*")], initial_dir: str = "", title: str = ""
 ) -> str:
     """A file selection dialog using the TKinter filedialog UI.
-    - Args:
-        - file_types: A list with tuples of predefined file types (e.g. [("CSV Files", "*.csv")]).
-        - initial_dir: A string specifying the initial directory.
-        - title: A string specifying the title of the dialog.
-    - Returns:
-        - A string containing the path of the selected file.
+
+    :param file_types: A list with tuples of predefined file types (e.g. [("CSV Files", "*.csv")]).
+    :param initial_dir: A string specifying the initial directory.
+    :param title: A string specifying the title of the dialog.
+    :return: A string containing the path of the selected file.
     """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
@@ -89,11 +87,10 @@ def file_selection_dialog(
 
 def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
     """Return all file paths of a given directory (even for files within sub-directories).
-    - Args:
-        - directory: A string specifying the directory.
-        - search_pattern: An optional string specifying the pattern which need to comply with the files.
-    - Returns:
-        - A list of strings containing all file paths.
+
+    :param directory: A string specifying the directory.
+    :param search_pattern: An optional string specifying the pattern which need to comply with the files.
+    :return: A list of strings containing all file paths.
     """
     file_paths = []
     for _, _, files in os.walk(directory):
@@ -106,11 +103,10 @@ def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
 
 def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
     """Return the most recent (latest) created file in a given directory.
-    - Args:
-        - directory: A string specifying the directory.
-        - file_pattern: An optional string specifying the pattern which need to comply with the filename.
-    - Returns:
-        - A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
+
+    :param directory: A string specifying the directory.
+    :param file_pattern: An optional string specifying the pattern which need to comply with the filename.
+    :return: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
     """
     creation_time = 0.0
     file_found = False
@@ -134,12 +130,11 @@ def get_latest_file_from_subdirectory(
     directory: str, directory_name: str, file_pattern: str = ""
 ) -> str | None:
     """Return the most recent (latest) created file within a sub-directory of a given directory.
-    - Args:
-        - directory: A string specifying the directory.
-        - directory_name: A string specifying the name of the sub-directory (partial name is possible as well).
-        - file_pattern: An optional string specifying the pattern which need to comply with the filename.
-    - Returns:
-        - A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
+
+    :param directory: A string specifying the directory.
+    :param directory_name: A string specifying the name of the sub-directory (partial name is possible as well).
+    :param file_pattern: An optional string specifying the pattern which need to comply with the filename.
+    :return: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
     """
     creation_time = 0.0
     file_found = False
@@ -163,11 +158,10 @@ def get_latest_file_from_subdirectory(
 
 def read_file(file_path: str, encoding: str = None) -> str:
     """Read the data from a file.
-    - Args:
-        - file_path: A string representing the file path.
-        - encoding: An optional string representing the encoding.
-    - Returns:
-        - A string containing the data of the given file.
+
+    :param file_path: A string representing the file path.
+    :param encoding: An optional string representing the encoding.
+    :return: A string containing the data of the given file.
     """
     data = ""
     with open(file_path, "r", encoding=encoding) as f:
@@ -177,10 +171,9 @@ def read_file(file_path: str, encoding: str = None) -> str:
 
 def read_xml(file_path: str) -> OrderedDict:
     """Read the data from a XML file and return it as an ordered dictionary.
-    - Args:
-        - file_path: A string representing the file path.
-    - Returns:
-        - An ordered dictionary containing the data of the XML file.
+
+    :param file_path: A string representing the file path.
+    :return: An ordered dictionary containing the data of the XML file.
     """
     data = ""
     with open(file_path, "r") as f:
@@ -192,12 +185,11 @@ def read_file_lines(
     file_path: str, nr_lines: int = -1, encoding: str = None
 ) -> list[str]:
     """Read the data from a file, line by line.
-    - Args:
-        - file_path: A string representing the file path.
-        - nr_lines: An optional integer representing the number of lines to read.
-        - encoding: An optional string representing the encoding.
-    - Returns:
-        - A list of strings containing the data of the file.
+
+    :param file_path: A string representing the file path.
+    :param nr_lines: An optional integer representing the number of lines to read.
+    :param encoding: An optional string representing the encoding.
+    :return: A list of strings containing the data of the file.
     """
     data = []
     with open(file_path, "r", encoding=encoding) as f:
@@ -212,13 +204,13 @@ def read_file_lines(
 
 def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
     """Write a list of strings to a file.
-    CAUTION: By default if the file path already exists, it will be overwritten.
-    - Args:
-        - results: A list of strings to write to the file.
-        - file_path: A string representing the path of the destination file.
-        - mode: An optional string representing the mode (e.g. "w" for write, "a" for append).
-    - Returns:
-        - A string containing the path of the destination file.
+
+    **CAUTION**: By default if the file path already exists, it will be overwritten.
+
+    :param results: A list of strings to write to the file.
+    :param file_path: A string representing the path of the destination file.
+    :param mode: An optional string representing the mode (e.g. "w" for write, "a" for append).
+    :return: A string containing the path of the destination file.
     """
     with open(file_path, mode) as f:
         for result in results:
@@ -229,10 +221,9 @@ def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
 
 def get_time_stamp(date_only: bool = False) -> str:
     """Return the current timestamp.
-    - Args:
-        - date_only: An optional boolean, True if only the date (excluding time) has to be returned.
-    - Returns:
-        - A string containing the current timestamp (including or excluding time, depending on the given optional argument).
+
+    :param date_only: An optional boolean, True if only the date (excluding time) has to be returned.
+    :return: A string containing the current timestamp (including or excluding time, depending on the given optional argument).
     """
     time_stamp = (
         str(datetime.now())
@@ -248,22 +239,22 @@ def get_time_stamp(date_only: bool = False) -> str:
 
 def prompt_message(type, title, message):
     """Prompt the user with a message.
-    - Args:
-        - type:
-            | Value       | Description                                                                                  |
-            | ----------- | -------------------------------------------------------------------------------------------- |
-            | info        | Displays an information message box                                                          |
-            | warning     | Displays a warning message box                                                               |
-            | error       | Displays an error message box                                                                |
-            | question    | Ask a question, returns the symbolic name of the selected button                             |
-            | okcancel    | Ask if operation should proceed, returns True if the answer is "ok" and False otherwise      |
-            | retrycancel | Ask if operation should be retried, return True if the answer is "retry" and False otherwise |
-            | yesno       | Ask a question, returns True if the answer is "yes" and False if "no"                        |
-            | yesnocancel | Ask a question, returns True if the answer is "yes", False if "no", and None otherwise       |
-        - title: A string representing the title of the prompt.
-        - message: A string representing the message of the prompt.
-    - Returns:
-        - A boolean or string (depending on the type argument) containing the users answer of the asked question.
+    - Types of massage boxes (value of parameter **type**):
+        | Value       | Description                                                                                  |
+        | ----------- | -------------------------------------------------------------------------------------------- |
+        | info        | Displays an information message box                                                          |
+        | warning     | Displays a warning message box                                                               |
+        | error       | Displays an error message box                                                                |
+        | question    | Ask a question, returns the symbolic name of the selected button                             |
+        | okcancel    | Ask if operation should proceed, returns True if the answer is "ok" and False otherwise      |
+        | retrycancel | Ask if operation should be retried, return True if the answer is "retry" and False otherwise |
+        | yesno       | Ask a question, returns True if the answer is "yes" and False if "no"                        |
+        | yesnocancel | Ask a question, returns True if the answer is "yes", False if "no", and None otherwise       |
+
+    :param type: The type of the message box
+    :param title: A string representing the title of the prompt.
+    :param message: A string representing the message of the prompt.
+    :return: A boolean or string (depending on the type argument) containing the users answer of the asked question.
     """
     result = None
     root = tk.Tk()

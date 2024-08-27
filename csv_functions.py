@@ -17,13 +17,12 @@ def read_csv(
     file_path: str, delimiter: str = ";", mode: str = "r", encoding=None
 ) -> list[list]:
     """Read the data from a CSV file into a matrix. A matrix is a list of lists (2D-array).
-    - Args:
-        - file_path: A string representing the source file path.
-        - delimiter: An optional string representing the delimiter of the CSV file.
-        - mode: An optional string representing the mode in which the file is opened (e.g. "w" for write, "a" for append).
-        - encoding: An optional string representing the encoding of the file.
-    - Returns:
-        - A matrix data structure, a list of list (2D-array).
+    
+    :param file_path: A string representing the source file path.
+    :param delimiter: An optional string representing the delimiter of the CSV file.
+    :param mode: An optional string representing the mode in which the file is opened (e.g. "w" for write, "a" for append).
+    :param encoding: An optional string representing the encoding of the file.
+    :return: A matrix data structure, a list of list (2D-array).
     """
     matrix = []
     # Open the file from the given path in the specified mode
@@ -40,13 +39,12 @@ def write_csv(
     matrix: list[list], file_path: str, delimiter: str = ";", mode: str = "w"
 ) -> str:
     """Write a matrix into a CSV file. A matrix is a list of lists (2D-array).
-    - Args:
-        - matrix: A matrix data structure, a list of list (2D-array).
-        - file_path: A string representing the destination file path.
-        - delimiter: An optional string representing the delimiter of the CSV file.
-        - mode: An optional string representing the mode in which the file is opened (e.g. "w" for write, "a" for append).
-    - Returns:
-        - A string representing the destination file path.
+    
+    :param matrix: A matrix data structure, a list of list (2D-array).
+    :param file_path: A string representing the destination file path.
+    :param delimiter: An optional string representing the delimiter of the CSV file.
+    :param mode: An optional string representing the mode in which the file is opened (e.g. "w" for write, "a" for append).
+    :return: A string representing the destination file path.
     """
     # Open the file from the given path in the specified mode
     with open(file_path, mode) as f:
@@ -60,12 +58,11 @@ def write_csv(
 
 def create_csv(file_path: str, field_names: list[str], delimiter: str = ";") -> str:
     """Create a CSV file with the given field names.
-    - Args:
-        - file_path: A string representing the destination file path.
-        - field_names: A list of strings representing the field names.
-        - delimiter: An optional string representing the delimiter of the CSV file.
-    - Returns:
-        - A string representing the destination file path.
+    
+    :param file_path: A string representing the destination file path.
+    :param field_names: A list of strings representing the field names.
+    :param delimiter: An optional string representing the delimiter of the CSV file.
+    :return: A string representing the destination file path.
     """
     # Open the file from the given path in the write mode
     with open(file_path, "w") as f:
@@ -80,13 +77,12 @@ def append_csv_record(
     file_path: str, field_names: list[str], record: dict, delimiter: str = ";"
 ) -> str:
     """Append a dictionary record to the given CSV file.
-    - Args:
-        - file_path: A string representing the destination file path.
-        - field_names: A list of strings representing the field names.
-        - record: A dictionary representing the record to be written.
-        - delimiter: An optional string representing the delimiter of the CSV file.
-    - Returns:
-        - A string representing the destination file path.
+    
+    :param file_path: A string representing the destination file path.
+    :param field_names: A list of strings representing the field names.
+    :param record: A dictionary representing the record to be written.
+    :param delimiter: An optional string representing the delimiter of the CSV file.
+    :return: A string representing the destination file path.
     """
     # Open the file from the given path in the append mode
     with open(file_path, "a") as f:
@@ -101,12 +97,11 @@ def read_csv_records(
     file_path: str, field_names: list[str] = None, delimiter: str = ";"
 ) -> list[dict]:
     """Read the records from a CSV file into a list of dictionaries.
-    - Args:
-        - file_path: A string representing the source file path.
-        - field_names: An optional list of strings representing the field names.
-        - delimiter: An optional string representing the delimiter of the CSV file.
-    - Returns:
-        - A list of dictionaries representing the records from the CSV file.
+    
+    :param file_path: A string representing the source file path.
+    :param field_names: An optional list of strings representing the field names.
+    :param delimiter: An optional string representing the delimiter of the CSV file.
+    :return: A list of dictionaries representing the records from the CSV file.
     """
     records = []
     # Open the file from the given path in the read mode

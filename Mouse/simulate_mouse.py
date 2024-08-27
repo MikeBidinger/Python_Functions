@@ -11,10 +11,8 @@ def main():
 
 def get_mouse_position(user_confirm: bool = False) -> tuple[int, int]:
     """Get the current mouse position coordinates.
-    - Args:
-        - user_confirm: An optional boolean representing wether or not the user should confirm to return the current mouse position coordinates.
-    - Returns:
-        - A tuple containing the current mouse position x- and y-coordinate.
+    :param user_confirm: An optional boolean representing wether or not the user should confirm to return the current mouse position coordinates.
+    :return: A tuple containing the current mouse position x- and y-coordinate.
     """
     if user_confirm:
         # Print screen resolution
@@ -33,11 +31,12 @@ def get_mouse_position(user_confirm: bool = False) -> tuple[int, int]:
 
 def set_mouse(x: int, y: int, click: bool = False):
     """Set the mouse position to a given position.
-    NOTE: The top-left corner of the screen represents the (0, 0) coordinates.
-    - Args:
-        - x: An integer representing the x-coordinate on the screen.
-        - y: An integer representing the y-coordinate on the screen.
-        - click: An optional boolean representing wether or not the mouse should be clicked on the given position.
+
+    **NOTE**: The top-left corner of the screen represents the (0, 0) coordinates.
+    
+    :param x: An integer representing the x-coordinate on the screen.
+    :param y: An integer representing the y-coordinate on the screen.
+    :param click: An optional boolean representing wether or not the mouse should be clicked on the given position.
     """
     # Set mouse position
     if click:
@@ -48,14 +47,14 @@ def set_mouse(x: int, y: int, click: bool = False):
 
 def move_mouse(x: int, y: int, duration: float = 0, click: bool = False):
     """Move the mouse position relative to the current mouse position.
-    NOTE: The top-left corner of the screen represents the (0, 0) coordinates.
-    - Args:
-        - x: An integer representing the x-coordinate to be moved on the screen.
-        - y: An integer representing the y-coordinate to be moved on the screen.
-        - duration: An optional float representing the duration of the mouse movement in seconds.
-        - click: An optional boolean representing wether or not the mouse should be clicked on the given position.
-    - Returns:
-        - A tuple containing the current mouse position x- and y-coordinate.
+
+    **NOTE**: The top-left corner of the screen represents the (0, 0) coordinates.
+
+    :param x: An integer representing the x-coordinate to be moved on the screen.
+    :param y: An integer representing the y-coordinate to be moved on the screen.
+    :param duration: An optional float representing the duration of the mouse movement in seconds.
+    :param click: An optional boolean representing wether or not the mouse should be clicked on the given position.
+    :return: A tuple containing the current mouse position x- and y-coordinate.
     """
     # Move mouse relatively to the current position
     pyautogui.move(x, y, duration, pyautogui.easeInOutQuad)
@@ -64,11 +63,12 @@ def move_mouse(x: int, y: int, duration: float = 0, click: bool = False):
 
 def afk_movement(x: int, y: int, duration: int):
     """Move the mouse position from a starting point for the given duration.
-    NOTE: The top-left corner of the screen represents the (0, 0) coordinates.
-    - Args:
-        - x: An integer representing the x-coordinate on the screen.
-        - y: An integer representing the y-coordinate on the screen.
-        - duration: An  float representing the duration of the mouse movement in seconds.
+
+    **NOTE**: The top-left corner of the screen represents the (0, 0) coordinates.
+
+    :param x: An integer representing the x-coordinate on the screen.
+    :param y: An integer representing the y-coordinate on the screen.
+    :param duration: An  float representing the duration of the mouse movement in seconds.
     """
     print("AFK script running...")
     # Set the starting mouse position
