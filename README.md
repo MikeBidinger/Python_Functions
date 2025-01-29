@@ -1,12 +1,11 @@
 # Python Functions
 
-Standardized function to save up repetitive work and keep code clean within
-Python scripting. These all have basic formats and uses, but they can be
-customized relatively easily to achieve tailored functionalities.
+Standardized function to save up repetitive work and keep code clean within Python scripting.
+These all have basic formats and uses, but they can be customized relatively easily to achieve tailored functionalities.
 
 ## Content:
 
--   **[File Handling](file_handling.py)**
+-   **[File Handling](file_handling/README.md)**
 
     <details>
       <summary>Mostly file related functions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
@@ -28,7 +27,7 @@ customized relatively easily to achieve tailored functionalities.
 
     </details>
 
--   **[CSV Handling](csv_functions.py):**
+-   **[CSV Handling](csv_functions/README.md):**
 
     <details>
       <summary>Read and write CSV files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
@@ -44,7 +43,7 @@ customized relatively easily to achieve tailored functionalities.
 
     </details>
 
--   **[JSON Handling](json_functions.py)**
+-   **[JSON Handling](json_functions/README.md)**
 
     <details>
       <summary>Read and write JSON files. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
@@ -56,7 +55,7 @@ customized relatively easily to achieve tailored functionalities.
 
     </details>
 
--   **[Data Parsing](parse_functions.py)**
+-   **[Data Parsing](parse_functions/README.md)**
 
     <details>
       <summary>Parsing functions for multiple different data types and structures. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
@@ -73,11 +72,11 @@ customized relatively easily to achieve tailored functionalities.
 
     </details>
 
--   **[Logging](log_example.py)**
+-   **[Logging](log_example/README.md)**
 
     How to log properly and well formatted using a configured logger (built-in Python module "[logging](https://docs.python.org/3/library/logging.html)").
 
--   **[Mail (Outlook) Functions](outlook.py)**
+-   **[Mail (Outlook) Functions](outlook/README.md)**
 
 -   **[Keyboard Functions](Keyboard)**
 
