@@ -2,15 +2,16 @@ import os
 
 DIR_PATH: str = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
-    "file_handling",
+    "mouse",
 )
-FILE_NAME: str = "file_handling.py"
+FILE_NAME: str = "simulate_mouse.py"
 
 DEST_PATH: str = "test.md"
 
 INTRO: str = f"""# Python Functions - [{FILE_NAME}]({FILE_NAME})
 
-Python functions
+Standardized functions to save up repetitive work and keep code clean within Python scripting.
+These all have basic formats and uses, but they can be customized relatively easily to achieve tailored functionalities.
 
 ## Content
 
@@ -28,25 +29,49 @@ class PythonFunction:
     def __init__(self) -> None:
         self.name: str = ""
         self.content: str = ""
+        self.en_content: bool = False
         self.summary: str = ""
         self.args: list[str] = []
         self.en_args: bool = False
         self.returns: list[str] = []
         self.en_returns: bool = False
 
-    def set_name(self, line: str) -> None:
+    def add_line(self, line: str) -> None:
+        if line.startswith("def "):
+            self._set_name(line)
+            self._add_content(line)
+        elif line.strip().startswith('"""'):
+            if self.summary == "":
+                self._set_summary(line)
+        elif line.strip() == "Args:":
+            self.en_args = True
+        elif line.strip() == "Returns:":
+            self.en_returns = True
+        elif self.en_content:
+            self._add_content(line)
+        if (self.en_returns or self.en_args) and line.strip() == '"""':
+            self.en_content, self.en_args, self.en_returns = True, False, False
+        elif self.en_args:
+            if line.strip():
+                self._add_argument(line)
+            else:
+                self.en_args = False
+        elif self.en_returns:
+            self._add_return(line)
+
+    def _set_name(self, line: str) -> None:
         self.name = line[line.index("def ") + 4 : line.index("(")] + "()"
 
-    def set_content(self, line: str) -> None:
+    def _add_content(self, line: str) -> None:
         self.content += line
 
-    def set_summary(self, line: str) -> None:
+    def _set_summary(self, line: str) -> None:
         self.summary = line.strip()[3:]
 
-    def add_argument(self, line: str) -> None:
+    def _add_argument(self, line: str) -> None:
         self.args.append(line.strip())
 
-    def add_return(self, line: str) -> None:
+    def _add_return(self, line: str) -> None:
         self.returns.append(line.strip())
 
 
@@ -56,7 +81,7 @@ class ReadMe:
         self.content: list[str] = []
         self.functions: list[str] = []
 
-    def add_function(self, func: PythonFunction):
+    def add_function(self, func: PythonFunction) -> None:
         self.content.append(f"-   [{func.name}](#{func.name[:-2]})")
         func_str: str = ""
         func_str += f"### {func.name}\n\n"
@@ -93,29 +118,34 @@ def get_functions(data: list[str]) -> list[PythonFunction]:
     start: bool = False
     for line in data:
         if line.startswith("def "):
-            start = True
             if func.name:
                 functions.append(func)
             func = PythonFunction()
-            func.set_name(line)
-        elif line.strip().startswith('"""'):
-            if func.summary == "":
-                func.set_summary(line)
-        elif start and line.strip() == "Args:":
-            func.en_args = True
-        elif start and line.strip() == "Returns:":
-            func.en_returns = True
-        if func.en_returns and line.strip() == '"""':
-            func.en_args, func.en_returns = False, False
-        if start:
-            func.set_content(line)
-        if func.en_args:
-            if line.strip():
-                func.add_argument(line)
-            else:
-                func.en_args = False
-        if func.en_returns:
-            func.add_return(line)
+        func.add_line(line)
+        # if line.startswith("def "):
+        #     if func.name:
+        #         functions.append(func)
+        #     func = PythonFunction()
+        #     func.set_name(line)
+        #     func.add_content(line)
+        # elif line.strip().startswith('"""'):
+        #     if func.summary == "":
+        #         func.set_summary(line)
+        # elif line.strip() == "Args:":
+        #     func.en_args = True
+        # elif line.strip() == "Returns:":
+        #     func.en_returns = True
+        # elif func.en_content:
+        #     func.add_content(line)
+        # if func.en_returns and line.strip() == '"""':
+        #     func.en_content, func.en_args, func.en_returns = True, False, False
+        # elif func.en_args:
+        #     if line.strip():
+        #         func.add_argument(line)
+        #     else:
+        #         func.en_args = False
+        # elif func.en_returns:
+        #     func.add_return(line)
     functions.append(func)
     return functions
 

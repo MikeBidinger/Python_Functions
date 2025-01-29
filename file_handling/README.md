@@ -27,8 +27,8 @@ Check if the given path exists, if not keep looping with the given delay in seco
 -   Args:
 
     -   path (str): A string representing the path (e.g. file or directory).
-    -   retries (int, optional): An optional integer representing the number of retries. Defaults to 12.
-    -   delay (int, optional): An optional integer representing the retry-delay in seconds. Defaults to 5.
+    -   retries (int, optional): An integer representing the number of retries. Defaults to 12.
+    -   delay (int, optional): An integer representing the retry-delay in seconds. Defaults to 5.
 
 -   Returns:
 
@@ -36,16 +36,6 @@ Check if the given path exists, if not keep looping with the given delay in seco
 
 ```python
 def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
-    """Check if the given path exists, if not keep looping with the given delay in seconds.
-
-    Args:
-        path (str): A string representing the path (e.g. file or directory).
-        retries (int, optional): An optional integer representing the number of retries. Defaults to 12.
-        delay (int, optional): An optional integer representing the retry-delay in seconds. Defaults to 5.
-
-    Returns:
-        bool: A boolean, True when the path is found, False if the path is not found after the given retries.
-    """
     if not os.path.exists(path):
         msg_str: str = f"'{path}' doesn't exists! Retrying in {delay} seconds."
         for i in range(retries + 1):
@@ -77,15 +67,6 @@ A directory selection dialog using the TKinter filedialog UI.
 
 ```python
 def directory_selection_dialog(initial_dir: str = "", title: str = "") -> str:
-    """A directory selection dialog using the TKinter filedialog UI.
-
-    Args:
-        initial_dir (str, optional): A string specifying the initial directory. Defaults to "".
-        title (str, optional): A string specifying the title of the dialog. Defaults to "".
-
-    Returns:
-        str: A string containing the path of the selected directory.
-    """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
@@ -112,20 +93,6 @@ A file selection dialog using the TKinter filedialog UI.
 
 ```python
 def file_selection_dialog(
-    file_types: list[tuple[str, str]] = [("All Files", "*.*")],
-    initial_dir: str = "",
-    title: str = "",
-) -> str:
-    """A file selection dialog using the TKinter filedialog UI.
-
-    Args:
-        file_types (list, optional): A list with tuples of predefined file types (e.g. [("CSV Files", "*.csv")]). Defaults to [("All Files", "*.*")].
-        initial_dir (str, optional): A string specifying the initial directory. Defaults to "".
-        title (str, optional): A string specifying the title of the dialog. Defaults to "".
-
-    Returns:
-        str: A string containing the path of the selected file.
-    """
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
@@ -143,7 +110,7 @@ Return all file paths of a given directory (even for files within sub-directorie
 -   Args:
 
     -   directory (str): A string specifying the directory.
-    -   search_pattern (str, optional): An optional string specifying the pattern which need to comply with the files. Defaults to "".
+    -   search_pattern (str, optional): A string specifying the pattern which need to comply with the files. Defaults to "".
 
 -   Returns:
 
@@ -151,15 +118,6 @@ Return all file paths of a given directory (even for files within sub-directorie
 
 ```python
 def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
-    """Return all file paths of a given directory (even for files within sub-directories).
-
-    Args:
-        directory (str): A string specifying the directory.
-        search_pattern (str, optional): An optional string specifying the pattern which need to comply with the files. Defaults to "".
-
-    Returns:
-        list[str]: A list of strings containing all file paths.
-    """
     file_paths: list[str] = []
     for _, _, files in os.walk(directory):
         for f in files:
@@ -176,7 +134,7 @@ Return the most recent (latest) created file in a given directory.
 -   Args:
 
     -   directory (str): A string specifying the directory.
-    -   file_pattern (str, optional): An optional string specifying the pattern which need to comply with the filename. Defaults to "".
+    -   file_pattern (str, optional): A string specifying the pattern which need to comply with the filename. Defaults to "".
 
 -   Returns:
 
@@ -184,15 +142,6 @@ Return the most recent (latest) created file in a given directory.
 
 ```python
 def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
-    """Return the most recent (latest) created file in a given directory.
-
-    Args:
-        directory (str): A string specifying the directory.
-        file_pattern (str, optional): An optional string specifying the pattern which need to comply with the filename. Defaults to "".
-
-    Returns:
-        str | None: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
-    """
     latest_file: str | None = None
     creation_time = 0.0
     file_found = False
@@ -220,7 +169,7 @@ Return the most recent (latest) created file within a sub-directory of a given d
 
     -   directory (str): A string specifying the directory.
     -   directory_name (str): A string specifying the name of the sub-directory (partial name is possible as well).
-    -   file_pattern (str, optional): An optional string specifying the pattern which need to comply with the filename. Defaults to "".
+    -   file_pattern (str, optional): A string specifying the pattern which need to comply with the filename. Defaults to "".
 
 -   Returns:
 
@@ -228,18 +177,6 @@ Return the most recent (latest) created file within a sub-directory of a given d
 
 ```python
 def get_latest_file_from_subdirectory(
-    directory: str, directory_name: str, file_pattern: str = ""
-) -> str | None:
-    """Return the most recent (latest) created file within a sub-directory of a given directory.
-
-    Args:
-        directory (str): A string specifying the directory.
-        directory_name (str): A string specifying the name of the sub-directory (partial name is possible as well).
-        file_pattern (str, optional): An optional string specifying the pattern which need to comply with the filename. Defaults to "".
-
-    Returns:
-        str | None: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
-    """
     latest_file: str | None = None
     creation_time = 0.0
     file_found = False
@@ -268,7 +205,7 @@ Read the data from a file.
 -   Args:
 
     -   file_path (str): A string representing the file path.
-    -   encoding (str | None, optional): An optional string representing the encoding. Defaults to None.
+    -   encoding (str | None, optional): A string representing the encoding. Defaults to None.
 
 -   Returns:
 
@@ -276,15 +213,6 @@ Read the data from a file.
 
 ```python
 def read_file(file_path: str, encoding: str | None = None) -> str:
-    """Read the data from a file.
-
-    Args:
-        file_path (str): A string representing the file path.
-        encoding (str | None, optional): An optional string representing the encoding. Defaults to None.
-
-    Returns:
-        str: A string containing the data of the given file.
-    """
     data: str = ""
     with open(file_path, "r", encoding=encoding) as f:
         data = f.read()
@@ -292,6 +220,10 @@ def read_file(file_path: str, encoding: str | None = None) -> str:
 ```
 
 ### read_xml()
+
+> [!NOTE]
+> This function uses the module [xmltodict](https://pypi.org/project/xmltodict/).
+> This module is not build-in with Python.
 
 Read the data from a XML file and return it as an ordered dictionary.
 
@@ -305,14 +237,6 @@ Read the data from a XML file and return it as an ordered dictionary.
 
 ```python
 def read_xml(file_path: str) -> OrderedDict:
-    """Read the data from a XML file and return it as an ordered dictionary.
-
-    Args:
-        file_path (str): A string representing the file path.
-
-    Returns:
-        OrderedDict: An ordered dictionary containing the data of the XML file.
-    """
     data: OrderedDict = OrderedDict()
     with open(file_path, "r") as f:
         data = xmltodict.parse(f.read())
@@ -326,8 +250,8 @@ Read the data from a file, line by line.
 -   Args:
 
     -   file_path (str): A string representing the file path.
-    -   nr_lines (int, optional): An optional integer representing the number of lines to read. Defaults to -1.
-    -   encoding (str | None, optional): An optional string representing the encoding. Defaults to None.
+    -   nr_lines (int, optional): An integer representing the number of lines to read. Defaults to -1.
+    -   encoding (str | None, optional): A string representing the encoding. Defaults to None.
 
 -   Returns:
 
@@ -335,18 +259,6 @@ Read the data from a file, line by line.
 
 ```python
 def read_file_lines(
-    file_path: str, nr_lines: int = -1, encoding: str | None = None
-) -> list[str]:
-    """Read the data from a file, line by line.
-
-    Args:
-        file_path (str): A string representing the file path.
-        nr_lines (int, optional): An optional integer representing the number of lines to read. Defaults to -1.
-        encoding (str | None, optional): An optional string representing the encoding. Defaults to None.
-
-    Returns:
-        list[str]: A list of strings containing the data of the file.
-    """
     data: list[str] = []
     with open(file_path, "r", encoding=encoding) as f:
         if nr_lines < 1:
@@ -366,7 +278,7 @@ Write a list of strings to a file.
 
     -   results (list[str]): A list of strings to write to the file.
     -   file_path (str): A string representing the path of the destination file.
-    -   mode (str, optional): An optional string representing the mode (e.g. "w" for write, "a" for append). Defaults to "w".
+    -   mode (str, optional): A string representing the mode (e.g. "w" for write, "a" for append). Defaults to "w".
 
 -   Returns:
 
@@ -374,18 +286,6 @@ Write a list of strings to a file.
 
 ```python
 def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
-    """Write a list of strings to a file.
-
-    CAUTION: By default if the file path already exists, it will be overwritten.
-
-    Args:
-        results (list[str]): A list of strings to write to the file.
-        file_path (str): A string representing the path of the destination file.
-        mode (str, optional): An optional string representing the mode (e.g. "w" for write, "a" for append). Defaults to "w".
-
-    Returns:
-        str: A string containing the path of the destination file.
-    """
     with open(file_path, mode) as f:
         for result in results:
             f.write(result)
@@ -399,24 +299,16 @@ Return the current timestamp.
 
 -   Args:
 
-    -   date_only (bool, optional): An optional boolean, True if only the date (excluding time) has to be returned. Defaults to False.
+    -   date_only (bool, optional): A boolean, True if only the date (excluding time) has to be returned. Defaults to False.
     -   Args:
     -   Enum (str):
 
 -   Returns:
 
-    -   str: A string containing the current timestamp (including or excluding time, depending on the given optional argument).
+    -   str: A string containing the current timestamp (including or excluding time, depending on the given argument).
 
 ```python
 def get_time_stamp(date_only: bool = False) -> str:
-    """Return the current timestamp.
-
-    Args:
-        date_only (bool, optional): An optional boolean, True if only the date (excluding time) has to be returned. Defaults to False.
-
-    Returns:
-        str: A string containing the current timestamp (including or excluding time, depending on the given optional argument).
-    """
     time_stamp: str = (
         str(datetime.now())
         .replace("-", "")
@@ -427,23 +319,8 @@ def get_time_stamp(date_only: bool = False) -> str:
     if date_only:
         return time_stamp.split("_")[0]
     return time_stamp
-```
 
-### prompt_message()
 
-Prompt the user with a message.
-
--   Args:
-
-    -   type (MessageBoxType): The type of the message box.
-    -   title (str): A string representing the title of the prompt.
-    -   message (str): A string representing the message of the prompt.
-
--   Returns:
-
-    -   None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
-
-```python
 class MessageBoxType(Enum):
     """Types of massage boxes.
 
@@ -461,7 +338,6 @@ class MessageBoxType(Enum):
     | `yesno`       | Ask a question, returns True if the answer is `yes` and False if `no`                        |
     | `yesnocancel` | Ask a question, returns True if the answer is `yes`, False if `no`, and None otherwise       |
     """
-
     INFO = "info"
     WARNING = "warning"
     ERROR = "error"
@@ -470,19 +346,24 @@ class MessageBoxType(Enum):
     RETRYCANCEL = "retrycancel"
     YESNO = "yesno"
     YESNOCANCEL = "yesnocancel"
+```
 
+### prompt_message()
 
+Prompt the user with a message.
+
+-   Args:
+
+    -   type (MessageBoxType): The type of the message box.
+    -   title (str): A string representing the title of the prompt.
+    -   message (str): A string representing the message of the prompt.
+
+-   Returns:
+
+    -   None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
+
+```python
 def prompt_message(type: MessageBoxType, title: str, message: str) -> None | str | bool:
-    """Prompt the user with a message.
-
-    Args:
-        type (MessageBoxType): The type of the message box.
-        title (str): A string representing the title of the prompt.
-        message (str): A string representing the message of the prompt.
-
-    Returns:
-        None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
-    """
     result: str | bool | None = None
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)

@@ -78,11 +78,11 @@ These all have basic formats and uses, but they can be customized relatively eas
 
 -   **[Mail (Outlook) Functions](outlook/README.md)**
 
--   **[Keyboard Functions](Keyboard)**
+-   **[Keyboard Functions](keyboard)**
 
     Automate keyboard actions.[^3]
 
--   **[Mouse Functions](Mouse)**
+-   **[Mouse Functions](mouse/README.md)**
 
     <details>
       <summary>Automate mouse actions. <i>(Click to view/hide functions and descriptions.)</i></summary><br>
@@ -98,6 +98,8 @@ These all have basic formats and uses, but they can be customized relatively eas
 
 -   **[Application Functions](Application)**
 
-[^1]: This function uses the module "[xmltodict](https://pypi.org/project/xmltodict/)". This module is not build-in with Python.
+[^1]: This function uses the module [xmltodict](https://pypi.org/project/xmltodict/).
+      This module is not build-in with Python.
 [^2]: A matrix is a list of lists (2D-array).
-[^3]: This function/script uses the module "[pyautogui](https://pyautogui.readthedocs.io/)". This module is not build-in with Python.
+[^3]: This function/script uses the module [pyautogui](https://pyautogui.readthedocs.io/).
+      This module is not build-in with Python.
