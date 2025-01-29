@@ -427,8 +427,23 @@ def get_time_stamp(date_only: bool = False) -> str:
     if date_only:
         return time_stamp.split("_")[0]
     return time_stamp
+```
 
+### prompt_message()
 
+Prompt the user with a message.
+
+-   Args:
+
+    -   type (MessageBoxType): The type of the message box.
+    -   title (str): A string representing the title of the prompt.
+    -   message (str): A string representing the message of the prompt.
+
+-   Returns:
+
+    -   None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
+
+```python
 class MessageBoxType(Enum):
     """Types of massage boxes.
 
@@ -455,23 +470,8 @@ class MessageBoxType(Enum):
     RETRYCANCEL = "retrycancel"
     YESNO = "yesno"
     YESNOCANCEL = "yesnocancel"
-```
 
-### prompt_message()
 
-Prompt the user with a message.
-
--   Args:
-
-    -   type (MessageBoxType): The type of the message box.
-    -   title (str): A string representing the title of the prompt.
-    -   message (str): A string representing the message of the prompt.
-
--   Returns:
-
-    -   None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
-
-```python
 def prompt_message(type: MessageBoxType, title: str, message: str) -> None | str | bool:
     """Prompt the user with a message.
 
