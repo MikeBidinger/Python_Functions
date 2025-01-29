@@ -5,34 +5,40 @@ These all have basic formats and uses, but they can be customized relatively eas
 
 ## Content
 
--   [location_check()](#location_check)
--   [directory_selection_dialog()](#directory_selection_dialog)
--   [file_selection_dialog()](#file_selection_dialog)
--   [get_all_files()](#get_all_files)
--   [get_latest_file()](#get_latest_file)
--   [get_latest_file_from_subdirectory()](#get_latest_file_from_subdirectory)
--   [read_file()](#read_file)
--   [read_xml()](#read_xml)
--   [read_file_lines()](#read_file_lines)
--   [write_file_list()](#write_file_list)
--   [get_time_stamp()](#get_time_stamp)
--   [prompt_message()](#prompt_message)
+-   [Functions](#functions):
 
-## Functions
+    -   [location_check()](#location_check)
+    -   [directory_selection_dialog()](#directory_selection_dialog)
+    -   [file_selection_dialog()](#file_selection_dialog)
+    -   [get_all_files()](#get_all_files)
+    -   [get_latest_file()](#get_latest_file)
+    -   [get_latest_file_from_subdirectory()](#get_latest_file_from_subdirectory)
+    -   [read_file()](#read_file)
+    -   [read_xml()](#read_xml)
+    -   [read_file_lines()](#read_file_lines)
+    -   [write_file_list()](#write_file_list)
+    -   [get_time_stamp()](#get_time_stamp)
+    -   [prompt_message()](#prompt_message)
 
-### location_check()
+-   [Classes](#classes):
+
+    -   [MessageBoxType()](#messageboxtype)
+
+# Functions
+
+## location_check()
 
 Check if the given path exists, if not keep looping with the given delay in seconds.
 
 -   Args:
 
-    -   path (str): A string representing the path (e.g. file or directory).
-    -   retries (int, optional): An integer representing the number of retries. Defaults to 12.
-    -   delay (int, optional): An integer representing the retry-delay in seconds. Defaults to 5.
+    -   `path` (`str`): A string representing the path (e.g. file or directory).
+    -   `retries` (`int`, optional): An integer representing the number of retries. Defaults to `12`.
+    -   `delay` (`int`, optional): An integer representing the retry-delay in seconds. Defaults to `5`.
 
 -   Returns:
 
-    -   bool: A boolean, True when the path is found, False if the path is not found after the given retries.
+    -   `bool`: A boolean, True when the path is found, False if the path is not found after the given retries.
 
 ```python
 def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
@@ -52,18 +58,18 @@ def location_check(path: str, retries: int = 12, delay: int = 5) -> bool:
     return True
 ```
 
-### directory_selection_dialog()
+## directory_selection_dialog()
 
 A directory selection dialog using the TKinter filedialog UI.
 
 -   Args:
 
-    -   initial_dir (str, optional): A string specifying the initial directory. Defaults to "".
-    -   title (str, optional): A string specifying the title of the dialog. Defaults to "".
+    -   `initial_dir` (`str`, optional): A string specifying the initial directory. Defaults to `""`.
+    -   `title` (`str`, optional): A string specifying the title of the dialog. Defaults to `""`.
 
 -   Returns:
 
-    -   str: A string containing the path of the selected directory.
+    -   `str`: A string containing the path of the selected directory.
 
 ```python
 def directory_selection_dialog(initial_dir: str = "", title: str = "") -> str:
@@ -77,22 +83,26 @@ def directory_selection_dialog(initial_dir: str = "", title: str = "") -> str:
     return directory_path
 ```
 
-### file_selection_dialog()
+## file_selection_dialog()
 
 A file selection dialog using the TKinter filedialog UI.
 
 -   Args:
 
-    -   file_types (list, optional): A list with tuples of predefined file types (e.g. [("CSV Files", "*.csv")]). Defaults to [("All Files", "*.*")].
-    -   initial_dir (str, optional): A string specifying the initial directory. Defaults to "".
-    -   title (str, optional): A string specifying the title of the dialog. Defaults to "".
+    -   `file_types` (`list`, optional): A list with tuples of predefined file types (e.g. `[("CSV Files", "*.csv")]`). Defaults to `[("All Files", "*.*")]`.
+    -   `initial_dir` (`str`, optional): A string specifying the initial directory. Defaults to `""`.
+    -   `title` (`str`, optional): A string specifying the title of the dialog. Defaults to `""`.
 
 -   Returns:
 
-    -   str: A string containing the path of the selected file.
+    -   `str`: A string containing the path of the selected file.
 
 ```python
 def file_selection_dialog(
+    file_types: list[tuple[str, str]] = [("All Files", "*.*")],
+    initial_dir: str = "",
+    title: str = "",
+) -> str:
     root = tk.Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
@@ -103,18 +113,18 @@ def file_selection_dialog(
     return file_path
 ```
 
-### get_all_files()
+## get_all_files()
 
 Return all file paths of a given directory (even for files within sub-directories).
 
 -   Args:
 
-    -   directory (str): A string specifying the directory.
-    -   search_pattern (str, optional): A string specifying the pattern which need to comply with the files. Defaults to "".
+    -   `directory` (`str`): A string specifying the directory.
+    -   `search_pattern` (`str`, optional): A string specifying the pattern which need to comply with the files. Defaults to `""`.
 
 -   Returns:
 
-    -   list[str]: A list of strings containing all file paths.
+    -   `list[str]`: A list of strings containing all file paths.
 
 ```python
 def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
@@ -127,18 +137,18 @@ def get_all_files(directory: str, search_pattern: str = "") -> list[str]:
     return file_paths
 ```
 
-### get_latest_file()
+## get_latest_file()
 
 Return the most recent (latest) created file in a given directory.
 
 -   Args:
 
-    -   directory (str): A string specifying the directory.
-    -   file_pattern (str, optional): A string specifying the pattern which need to comply with the filename. Defaults to "".
+    -   `directory` (`str`): A string specifying the directory.
+    -   `file_pattern` (`str`, optional): A string specifying the pattern which need to comply with the filename. Defaults to `""`.
 
 -   Returns:
 
-    -   str | None: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
+    -   `str | None`: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
 
 ```python
 def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
@@ -161,22 +171,24 @@ def get_latest_file(directory: str, file_pattern: str = "") -> str | None:
         return latest_file
 ```
 
-### get_latest_file_from_subdirectory()
+## get_latest_file_from_subdirectory()
 
 Return the most recent (latest) created file within a sub-directory of a given directory.
 
 -   Args:
 
-    -   directory (str): A string specifying the directory.
-    -   directory_name (str): A string specifying the name of the sub-directory (partial name is possible as well).
-    -   file_pattern (str, optional): A string specifying the pattern which need to comply with the filename. Defaults to "".
+    -   `directory` (`str`): A string specifying the directory.
+    -   `directory_name` (`str`): A string specifying the name of the sub-directory (partial name is possible as well).
+    -   `file_pattern` (`str`, optional): A string specifying the pattern which need to comply with the filename. Defaults to `""`.
 
 -   Returns:
 
-    -   str | None: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
+    -   `str | None`: A strings containing the most recent (latest) created file path if the file is found, otherwise None will be returned.
 
 ```python
 def get_latest_file_from_subdirectory(
+    directory: str, directory_name: str, file_pattern: str = ""
+) -> str | None:
     latest_file: str | None = None
     creation_time = 0.0
     file_found = False
@@ -198,18 +210,18 @@ def get_latest_file_from_subdirectory(
         return latest_file
 ```
 
-### read_file()
+## read_file()
 
 Read the data from a file.
 
 -   Args:
 
-    -   file_path (str): A string representing the file path.
-    -   encoding (str | None, optional): A string representing the encoding. Defaults to None.
+    -   `file_path` (`str`): A string representing the file path.
+    -   `encoding` (`str | None`, optional): A string representing the encoding. Defaults to `None`.
 
 -   Returns:
 
-    -   str: A string containing the data of the given file.
+    -   `str`: A string containing the data of the given file.
 
 ```python
 def read_file(file_path: str, encoding: str | None = None) -> str:
@@ -219,21 +231,17 @@ def read_file(file_path: str, encoding: str | None = None) -> str:
     return data
 ```
 
-### read_xml()
-
-> [!NOTE]
-> This function uses the module [xmltodict](https://pypi.org/project/xmltodict/).
-> This module is not build-in with Python.
+## read_xml()
 
 Read the data from a XML file and return it as an ordered dictionary.
 
 -   Args:
 
-    -   file_path (str): A string representing the file path.
+    -   `file_path` (`str`): A string representing the file path.
 
 -   Returns:
 
-    -   OrderedDict: An ordered dictionary containing the data of the XML file.
+    -   `OrderedDict`: An ordered dictionary containing the data of the XML file.
 
 ```python
 def read_xml(file_path: str) -> OrderedDict:
@@ -243,22 +251,24 @@ def read_xml(file_path: str) -> OrderedDict:
     return data
 ```
 
-### read_file_lines()
+## read_file_lines()
 
 Read the data from a file, line by line.
 
 -   Args:
 
-    -   file_path (str): A string representing the file path.
-    -   nr_lines (int, optional): An integer representing the number of lines to read. Defaults to -1.
-    -   encoding (str | None, optional): A string representing the encoding. Defaults to None.
+    -   `file_path` (`str`): A string representing the file path.
+    -   `nr_lines` (`int`, optional): An integer representing the number of lines to read. Defaults to `-1`.
+    -   `encoding` (`str | None`, optional): A string representing the encoding. Defaults to `None`.
 
 -   Returns:
 
-    -   list[str]: A list of strings containing the data of the file.
+    -   `list[str]`: A list of strings containing the data of the file.
 
 ```python
 def read_file_lines(
+    file_path: str, nr_lines: int = -1, encoding: str | None = None
+) -> list[str]:
     data: list[str] = []
     with open(file_path, "r", encoding=encoding) as f:
         if nr_lines < 1:
@@ -270,19 +280,22 @@ def read_file_lines(
     return data
 ```
 
-### write_file_list()
+## write_file_list()
+
+> [!CAUTION]
+> By default the file will be overwritten, if the file path already exists.
 
 Write a list of strings to a file.
 
 -   Args:
 
-    -   results (list[str]): A list of strings to write to the file.
-    -   file_path (str): A string representing the path of the destination file.
-    -   mode (str, optional): A string representing the mode (e.g. "w" for write, "a" for append). Defaults to "w".
+    -   `results` (`list[str]`): A list of strings to write to the file.
+    -   `file_path` (`str`): A string representing the path of the destination file.
+    -   `mode` (`str`, optional): A string representing the mode (e.g. `"w"` for write, `"a"` for append). Defaults to `"w"`.
 
 -   Returns:
 
-    -   str: A string containing the path of the destination file.
+    -   `str`: A string containing the path of the destination file.
 
 ```python
 def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
@@ -293,19 +306,17 @@ def write_file_list(results: list[str], file_path: str, mode: str = "w") -> str:
     return file_path
 ```
 
-### get_time_stamp()
+## get_time_stamp()
 
 Return the current timestamp.
 
 -   Args:
 
-    -   date_only (bool, optional): A boolean, True if only the date (excluding time) has to be returned. Defaults to False.
-    -   Args:
-    -   Enum (str):
+    -   `date_only` (`bool`, optional): A boolean, `True` if only the date (excluding time) has to be returned. Defaults to `False`.
 
 -   Returns:
 
-    -   str: A string containing the current timestamp (including or excluding time, depending on the given argument).
+    -   `str`: A string containing the current timestamp (including or excluding time, depending on the given argument).
 
 ```python
 def get_time_stamp(date_only: bool = False) -> str:
@@ -322,45 +333,21 @@ def get_time_stamp(date_only: bool = False) -> str:
 
 
 class MessageBoxType(Enum):
-    """Types of massage boxes.
-
-    Args:
-        Enum (str):
-
-    | Value         | Description                                                                                  |
-    | ------------- | -------------------------------------------------------------------------------------------- |
-    | `info`        | Displays an information message box                                                          |
-    | `warning`     | Displays a warning message box                                                               |
-    | `error`       | Displays an error message box                                                                |
-    | `question`    | Ask a question, returns the symbolic name of the selected button                             |
-    | `okcancel`    | Ask if operation should proceed, returns True if the answer is `ok` and False otherwise      |
-    | `retrycancel` | Ask if operation should be retried, return True if the answer is `retry` and False otherwise |
-    | `yesno`       | Ask a question, returns True if the answer is `yes` and False if `no`                        |
-    | `yesnocancel` | Ask a question, returns True if the answer is `yes`, False if `no`, and None otherwise       |
-    """
-    INFO = "info"
-    WARNING = "warning"
-    ERROR = "error"
-    QUESTION = "question"
-    OKCANCEL = "okcancel"
-    RETRYCANCEL = "retrycancel"
-    YESNO = "yesno"
-    YESNOCANCEL = "yesnocancel"
 ```
 
-### prompt_message()
+## prompt_message()
 
 Prompt the user with a message.
 
 -   Args:
 
-    -   type (MessageBoxType): The type of the message box.
-    -   title (str): A string representing the title of the prompt.
-    -   message (str): A string representing the message of the prompt.
+    -   `type` ([`MessageBoxType`](#messageboxtype)): The type of the message box.
+    -   `title` (`str`): A string representing the title of the prompt.
+    -   `message` (`str`): A string representing the message of the prompt.
 
 -   Returns:
 
-    -   None | str | bool: A boolean or string (depending on the type argument) containing the users answer of the asked question.
+    -   `None | str | bool`: A boolean or string (depending on the type argument) containing the users answer of the asked question.
 
 ```python
 def prompt_message(type: MessageBoxType, title: str, message: str) -> None | str | bool:
@@ -386,4 +373,35 @@ def prompt_message(type: MessageBoxType, title: str, message: str) -> None | str
         result = messagebox.askyesnocancel(title, message, parent=root)
     root.destroy()
     return result
+```
+
+# Classes
+
+## MessageBoxType()
+
+Types of massage boxes.
+`Enum` (`str`):
+
+| Value         | Description                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| `info`        | Displays an information message box                                                              |
+| `warning`     | Displays a warning message box                                                                   |
+| `error`       | Displays an error message box                                                                    |
+| `question`    | Ask a question, returns the symbolic name of the selected button                                 |
+| `okcancel`    | Ask if operation should proceed, returns `True` if the answer is `ok` and `False` otherwise      |
+| `retrycancel` | Ask if operation should be retried, return `True` if the answer is `retry` and `False` otherwise |
+| `yesno`       | Ask a question, returns `True` if the answer is `yes` and `False` if `no`                        |
+| `yesnocancel` | Ask a question, returns `True` if the answer is `yes`, `False` if `no`, and `None` otherwise     |
+
+```python
+class MessageBoxType(Enum):
+
+    INFO = "info"
+    WARNING = "warning"
+    ERROR = "error"
+    QUESTION = "question"
+    OKCANCEL = "okcancel"
+    RETRYCANCEL = "retrycancel"
+    YESNO = "yesno"
+    YESNOCANCEL = "yesnocancel"
 ```
