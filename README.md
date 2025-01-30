@@ -72,6 +72,10 @@ These all have basic formats and uses, but they can be customized relatively eas
 
     </details>
 
+-   **[API Functions](api_functions/README.md)**
+
+    Multiple API functions.
+
 -   **[Logging](log_example/README.md)**
 
     How to log properly and well formatted using a configured logger (built-in Python module "[logging](https://docs.python.org/3/library/logging.html)").
@@ -98,8 +102,11 @@ These all have basic formats and uses, but they can be customized relatively eas
 
 -   **[Application Functions](Application)**
 
-[^1]: This function uses the module [xmltodict](https://pypi.org/project/xmltodict/).
-      This module is not build-in with Python.
+[^1]:
+    This function uses the module [xmltodict](https://pypi.org/project/xmltodict/).
+    This module is not build-in with Python.
+
 [^2]: A matrix is a list of lists (2D-array).
-[^3]: This function/script uses the module [pyautogui](https://pyautogui.readthedocs.io/).
-      This module is not build-in with Python.
+[^3]:
+    This function/script uses the module [pyautogui](https://pyautogui.readthedocs.io/).
+    This module is not build-in with Python.

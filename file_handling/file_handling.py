@@ -1,7 +1,7 @@
-import tkinter as tk
-from tkinter import filedialog, messagebox
 import xmltodict  # https://pypi.org/project/xmltodict/ - This module is not build-in with Python
 
+import tkinter as tk
+from tkinter import filedialog, messagebox
 import os
 import re
 from datetime import datetime
