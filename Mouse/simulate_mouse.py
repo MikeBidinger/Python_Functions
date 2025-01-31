@@ -20,7 +20,7 @@ def get_mouse_position(user_confirm: bool = False) -> tuple[float, float]:
             f"Screen resolution:\n\tWidth :{SCREEN_WIDTH:>5}\n\tHeight:{SCREEN_HEIGHT:>5}"
         )
         # Wait for user input (Enter)
-        input("Press enter to register the current mouse position (coordinates):")
+        input("Press `enter` to register the current mouse position (coordinates):")
     # Print the current mouse location coordinates
     current_mouse_x: float = 0
     current_mouse_y: float = 0
@@ -95,12 +95,12 @@ def afk_movement(x: int, y: int, duration: int) -> None:
 
 
 def example() -> None:
-    """Example of use: Get, set and move mouse position.
+    """Example of use:
+    Get, set and move mouse position.
     """
     get_mouse_position(True)
     set_mouse(650, 400)
     move_mouse(300, 300, 1)
-    afk_movement(100, 100, (15 * 60))
 
 
 if __name__ == "__main__":

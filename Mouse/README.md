@@ -130,12 +130,23 @@ def afk_movement(x: int, y: int, duration: int) -> None:
 
 ## example()
 
-Example of use: Get, set and move mouse position.
+Example of use:
+Get, set and move mouse position.
 
 ```python
 def example() -> None:
     get_mouse_position(True)
     set_mouse(650, 400)
     move_mouse(300, 300, 1)
-    afk_movement(100, 100, (15 * 60))
+```
+
+The given result in the Python interpreter after the user pressed `enter` to register the current mouse position looks like:
+
+```result
+Screen resolution:
+        Width : 1470
+        Height:  956
+Press `enter` to register the current mouse position (coordinates):
+        X:   24
+        Y:  166
 ```

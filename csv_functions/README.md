@@ -159,7 +159,8 @@ def read_csv_records(
 
 ## example_function()
 
-Example of use: Create, append and read random example records to a CSV file.
+Example of use:
+Create, append and read random example records to a CSV file.
 
 ```python
 def example_function():
@@ -180,4 +181,25 @@ def example_function():
     # Read records from CSV file
     result: list[dict] = read_csv_records(file_path)
     pp(result)
+```
+
+The created file `example.csv` contains the random appended records:
+
+```csv
+ID;Field_A;Field_B;Field_C
+1;11;22;32
+2;11;21;37
+3;17;29;32
+4;13;27;37
+5;18;23;37
+```
+
+The result of the read file `example.csv` is given by the Python interpreter:
+
+```result
+[{'Field_A': '11', 'Field_B': '22', 'Field_C': '32', 'ID': '1'},
+ {'Field_A': '11', 'Field_B': '21', 'Field_C': '37', 'ID': '2'},
+ {'Field_A': '17', 'Field_B': '29', 'Field_C': '32', 'ID': '3'},
+ {'Field_A': '13', 'Field_B': '27', 'Field_C': '37', 'ID': '4'},
+ {'Field_A': '18', 'Field_B': '23', 'Field_C': '37', 'ID': '5'}]
 ```

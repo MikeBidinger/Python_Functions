@@ -76,11 +76,11 @@ These all have basic formats and uses, but they can be customized relatively eas
 
     Multiple API functions.
 
--   **[Logging](log_example/README.md)**
+-   **[Logging](log_example.py)**
 
     How to log properly and well formatted using a configured logger (built-in Python module "[logging](https://docs.python.org/3/library/logging.html)").
 
--   **[Mail (Outlook) Functions](outlook/README.md)**
+-   **[Mail (Outlook) Functions](outlook.py)**
 
 -   **[Keyboard Functions](keyboard)**
 

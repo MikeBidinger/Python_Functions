@@ -120,7 +120,8 @@ def read_csv_records(
 
 
 def example_function():
-    """Example of use: Create, append and read random example records to a CSV file.
+    """Example of use:
+    Create, append and read random example records to a CSV file.
     """
     file_path = "example.csv"
     field_names: list[str] = ["ID", "Field_A", "Field_B", "Field_C"]
