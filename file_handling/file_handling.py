@@ -212,7 +212,7 @@ def read_file_lines(
     with open(file_path, "r", encoding=encoding) as f:
         if nr_lines < 1:
             for line in f:
-                data.append(line.replace("\n", ""))
+                data.append(line.strip())
         else:
             for _ in range(0, nr_lines):
                 data.append(f.readline())
